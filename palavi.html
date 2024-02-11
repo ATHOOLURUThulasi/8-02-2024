@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label >Username</label>
+        <input type="username" placeholder="username"  >
+        <br>
+        <br>
+        <label>Mobile-Number</label>
+        <input type="text" placeholder="number"  maxlength="10" >
+        <br>
+        <br>
+        <label >Email</label>
+        <input type="email" placeholder="email" >
+        <br>
+        <br>
+        <label >password</label>
+        <input type="password" maxlength="8" >
+        <br>
+        <br>
+        <label >confirm-password</label>
+        <input type="password" maxlength="8" >
+        <br>
+        <br>
+        <button>register</button>
+
+        <button>Log in</button>
+    </form>
+    <script>
+    var inp=document.getElementsByTagName("input")
+var btn=document.getElementsByTagName("button")
+var arr=[]
+btn[0].addEventListener("click",(event)=>{
+ event.preventDefault()
+    if(inp[0].value!=""){
+        var count=0
+        for(var i=0;i<arr.length;i++){
+             JSON.parse(arr)
+            if(inp[0].value==arr[i]["username"]){
+                count++
+                break;
+            }
+        }
+        if(count==0){
+            if(inp[3].value==inp[4].value){
+                var ud={
+                    username:inp[0].value,
+                    password:inp[3].value,
+                    confirm:inp[4].value
+                }
+                arr.push(ud)
+                localStorage.setItem("userdata",JSON.stringify(arr))
+                alert("registered successfully please login ")
+                
+                inp[0].value=""
+                inp[1].value=""
+                inp[2].value=""
+                inp[3].value=""
+                inp[4].value=""
+            }
+            else{
+                alert("Password mismatch")
+            }
+        }
+        else{
+            alert("Username already exists")
+        }
+    }
+    else{
+        alert("Please provide a username")
+    }
+})
+console.log(btn)
+btn[1].addEventListener("click",()=>{
+ window.location.assign("login.html")
+})
+
+    </script>
+</body>
+</html>
